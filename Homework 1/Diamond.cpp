@@ -1,8 +1,8 @@
 /*
-HW0.cpp
+Diamond.cpp
 Michael Baran
-2 Sept 2020
-HW0 for CS 201
+10 Sept 2020
+HW1 for CS 201
 */
 #include <iostream>
 
