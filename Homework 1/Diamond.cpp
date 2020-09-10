@@ -17,7 +17,7 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		
 		for (int j = 0; j < space; j++) {
-			cout << "_";
+			cout << " ";
 
 		}
 		for (int k = 0; k <= i; k++) {
@@ -26,6 +26,19 @@ int main() {
 		
 		cout << endl;
 		space--;
+	}
+	space = 0;
+	for (int i = n-1; i > 0; i--) {
+		
+		for(int j =0; j < space; j++) {
+			cout << " ";
+		}
+		for (int k = 0; k < i; k++) {
+			cout << " #";
+		}
+		cout << endl;
+		space++;
+
 	}
 	return 0;
 }
