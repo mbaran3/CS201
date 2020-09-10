@@ -10,6 +10,7 @@ using std::endl;
 using std::cout;
 using std::cin;
 
+
 int main() {
 	int n;
 	bool error = true;
