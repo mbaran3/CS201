@@ -11,10 +11,26 @@ using std::cout;
 using std::cin;
 
 int main() {
-	int n = 5;
-	int space = n - 1;
-	
-	for (int i = 0; i < n; i++) {
+	int n;
+	bool error = true;
+
+	cout << "Please Enter a Number " << endl;
+	cin >> n;
+
+	while (error == true) {  //Check user input for error
+
+		if (n <= 0) {
+		cout << "Please Enter a Postive non 0 number " << endl;
+		cin >> n;
+		}
+		if (n > 0) {
+		error = false;
+		}
+	}
+
+	int space = n - 1; 
+	for (int i = 0; i < n; i++) { 
+		
 		
 		for (int j = 0; j < space; j++) {
 			cout << " ";
