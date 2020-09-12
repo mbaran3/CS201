@@ -22,6 +22,12 @@ int main() {
 			greatest = n;
 		}
 	}
-	cout << greatest << endl;
+	if (greatest == 0) {
+		cout << "No postive number was entered" << endl;
+	}
+	else {
+		cout << "The largest number entered was "<< greatest << endl;
+	}
+
 	return 0;
 }
