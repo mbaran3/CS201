@@ -1,3 +1,10 @@
+/*
+*Michael Baran
+* September 16 2020
+* CS201 HW2
+* vectornames.cpp
+*/
+
 #include<iostream>
 #include<vector>
 #include<string>
@@ -5,8 +12,18 @@
 
 void inputnames(std::vector<std::string>& names) {
 	int size;
-	std::cout << "How many names would you like to enter" << std::endl;
-	std::cin >> size;
+	bool error = true;
+	do {
+		std::cout << "How many names would you like to enter" << std::endl;
+		std::cin >> size;
+
+		if (size <= 0) {
+			std::cout << "You either did not enter a number or entered a number less then 0" << std::endl;
+		}
+		else {
+			error = false;
+		}
+	} while (error == true);
 	std::cout << "Enter Names With use RETURN to seperate them" << std::endl;
 	for (int i = 0; i <= size; i++) {
 	std::string Word;
@@ -26,24 +43,30 @@ void printnames(const std::vector<std::string>& names) {
 		std::cout << names[i] << std::endl;
 	}
 }
-void checknames(const std::vector<std::string>& names) {
+bool checknames(const std::vector<std::string>& names) {
 	std::string checker;
 	std::cout << "Enter a Name you would like to check for" << std::endl;
 	std::getline(std::cin, checker);
 	int size = names.size();
 	for (int i = 0; i < size; i++) {
+		std::string holder = names[i];
+		if (holder == checker) {
+			std::cout << "The Name is in the list" << std::endl;
+			return true;
+		}
 
-	if (names[i] == checker)
-		std::cout << "Works" << std::endl;
-		break;
 	}
-	std::cout << "THIS FUNCTION IS WORKING" << std::endl;
+	std::cout << "The Name is not in the list" << std::endl;
+	return false;
 
 }
 int main() {
 	std::vector<std::string> names;
 
 	inputnames(names);
-	printnames(names);
 	checknames(names);
+	printnames(names);
+
+	return 0;
+	
 }
