@@ -18,13 +18,13 @@ int main() {
 	 "Dollars" };
 	std::vector<int> howmuch; // How much of each coin
 	std::vector<float> value = { .01, .05, .1, .25, .5, 1 }; //How much each coin is worth
-	/*
+	
 	for (int i = 0; i < 6; i++) {
 		int holdmoney;
 		std::cout << "How many " << monies[i] << " Do you have" << std::endl;
 		std::cin >> holdmoney;
 		howmuch.push_back(holdmoney);
-	}*/
+	}
 	std::cout << "\n";
 	for (int i = 0; i < 6; i++) {
 		if (howmuch[i] == 1) {
