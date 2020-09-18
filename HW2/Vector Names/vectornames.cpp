@@ -8,7 +8,7 @@
 #include<iostream>
 #include<vector>
 #include<string>
-
+#include<time.h>
 
 void inputnames(std::vector<std::string>& names) {
 	int size;
@@ -26,9 +26,9 @@ void inputnames(std::vector<std::string>& names) {
 	} while (error == true);
 	std::cout << "Enter Names With use RETURN to seperate them" << std::endl;
 	for (int i = 0; i <= size; i++) {
-	std::string Word;
-	std::getline(std::cin, Word);
-	names.push_back(Word);
+		std::string Word;
+		std::getline(std::cin, Word);
+		names.push_back(Word);
 
 	}
 
@@ -37,36 +37,56 @@ void inputnames(std::vector<std::string>& names) {
 void printnames(const std::vector<std::string>& names) {
 
 	int size = names.size();
-	std::cout << "THIS FUNCTION IS WORKING" << std::endl;
+
 	for (int i = 0; i < size; i++) {
 
 		std::cout << names[i] << std::endl;
 	}
 }
+void scramblenames(std::vector<std::string>& names) {
+	srand(time(NULL));
+	std::cout << "\nThis is a string randomly generated using each word\n" << std::endl;
+	for (int i = 0; i < names.size(); i++) {
+		std::string name = names[i];
+		int size = name.size();
+		std::cout << name << " Becomes" << std::endl;
+		for (int j = 0; j< size; ++j) {
+			int random = rand() % size;
+			char hold = name[random];
+			
+			std::string holder(1, hold);
+			name.insert(j, holder);
+			name.pop_back();
+			
+		}
+		std::cout << name << std::endl;
+	}
+	return;
+}
 bool checknames(const std::vector<std::string>& names) {
 	std::string checker;
-	std::cout << "Enter a Name you would like to check for" << std::endl;
+	std::cout << "\nEnter a Name you would like to check for\n" << std::endl;
 	std::getline(std::cin, checker);
 	int size = names.size();
 	for (int i = 0; i < size; i++) {
 		std::string holder = names[i];
 		if (holder == checker) {
-			std::cout << "The Name is in the list" << std::endl;
+			std::cout << "\nThe word "<< checker <<" is in the list" << std::endl;
 			return true;
 		}
 
 	}
-	std::cout << "The Name is not in the list" << std::endl;
+	std::cout << "\nThe Word" << checker << " is not in the list" << std::endl;
 	return false;
 
 }
 int main() {
 	std::vector<std::string> names;
-
 	inputnames(names);
 	checknames(names);
 	printnames(names);
+	scramblenames(names);
 
 	return 0;
-	
+
 }
