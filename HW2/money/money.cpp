@@ -16,15 +16,15 @@ int main() {
 	 "Dollar" };
 	std::vector<std::string> monies = { "Pennies", "Nickles", "Dimes", "Quaters", "Half Dollars",
 	 "Dollars" };
-	std::vector<int> howmuch; //How much of each coin 
+	std::vector<int> howmuch; // How much of each coin
 	std::vector<float> value = { .01, .05, .1, .25, .5, 1 }; //How much each coin is worth
-
+	/*
 	for (int i = 0; i < 6; i++) {
 		int holdmoney;
 		std::cout << "How many " << monies[i] << " Do you have" << std::endl;
 		std::cin >> holdmoney;
 		howmuch.push_back(holdmoney);
-	}
+	}*/
 	std::cout << "\n";
 	for (int i = 0; i < 6; i++) {
 		if (howmuch[i] == 1) {
@@ -41,5 +41,7 @@ int main() {
 		totalvalue = totalvalue + tempvalue;
 
 	}
-	std::cout << "You have a total of $" << totalvalue << std::endl;
+	std::cout << std::fixed;
+	std::cout.precision(2);
+	std::cout << "You have a total of $" << totalvalue <<  std::endl;
 }
