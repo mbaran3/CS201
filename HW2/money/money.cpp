@@ -12,10 +12,8 @@
 
 int main() {
 
-	std::vector<std::string> money = { "Penny", "Nickle", "Dime", "Quater", "Half Dollar",
-	 "Dollar" };
-	std::vector<std::string> monies = { "Pennies", "Nickles", "Dimes", "Quaters", "Half Dollars",
-	 "Dollars" };
+	std::vector<std::string> money = { "Penny", "Nickle", "Dime", "Quater", "Half Dollar", "Dollar" };
+	std::vector<std::string> monies = { "Pennies", "Nickles", "Dimes", "Quaters", "Half Dollars", "Dollars" };
 	std::vector<int> howmuch; // How much of each coin
 	std::vector<float> value = { .01, .05, .1, .25, .5, 1 }; //How much each coin is worth
 	

@@ -63,30 +63,63 @@ void scramblenames(std::vector<std::string>& names) {
 	}
 	return;
 }
-bool checknames(const std::vector<std::string>& names) {
-	std::string checker;
-	std::cout << "\nEnter a Name you would like to check for\n" << std::endl;
-	std::getline(std::cin, checker);
+bool checknames(const std::vector<std::string>& names, std::string checker) {
+
 	int size = names.size();
 	for (int i = 0; i < size; i++) {
 		std::string holder = names[i];
 		if (holder == checker) {
-			std::cout << "\nThe word "<< checker <<" is in the list" << std::endl;
 			return true;
 		}
 
 	}
-	std::cout << "\nThe Word" << checker << " is not in the list" << std::endl;
 	return false;
 
 }
 int main() {
-	std::vector<std::string> names;
-	inputnames(names);
-	checknames(names);
-	printnames(names);
-	scramblenames(names);
 
-	return 0;
+	std::vector<std::string> names;
+	bool run = true;
+	while (run = true) {
+
+		int selection;
+
+		std::cout << "Press 1 to input names" << std::endl;
+		std::cout << "Press 2 to check  for a name" << std::endl;
+		std::cout << "Press 3 to print the names" << std::endl;
+		std::cout << "Press 4 to scramble the names" << std::endl;
+		std::cin >> selection;
+
+		if (selection == 1) {
+			inputnames(names);
+		}
+		if (selection == 2) {
+		std::string checker;
+		std::cout << "\nEnter a Name you would like to check for\n" << std::endl;
+		std::getline(std::cin, checker);
+			if (checknames(names, checker) == true) {
+				std::cout << checker << "is in the list of names" << std::endl;
+			}
+			else {
+				std::cout << checker << "is not in the list of names" << std::endl;
+			}
+		}
+		if (selection == 3) {
+			printnames(names);
+		}
+		if (selection == 4) {
+			scramblenames(names);
+		}
+		if (selection == 0) {
+			return 0;
+		}
+		if (selection >= 4 || selection < 0) {
+			std::cout << "Please only enter a number between 0 and 4" << std::endl;
+		}
+
+
+	}
+
+
 
 }
