@@ -88,20 +88,22 @@ int main() {
 		std::cout << "Press 2 to check  for a name" << std::endl;
 		std::cout << "Press 3 to print the names" << std::endl;
 		std::cout << "Press 4 to scramble the names" << std::endl;
+		std::cout << "Press 0 to exit the program" << std::endl;
 		std::cin >> selection;
 
 		if (selection == 1) {
 			inputnames(names);
 		}
 		if (selection == 2) {
+		std::cin.ignore(1024, '\n');
 		std::string checker;
 		std::cout << "\nEnter a Name you would like to check for\n" << std::endl;
 		std::getline(std::cin, checker);
 			if (checknames(names, checker) == true) {
-				std::cout << checker << "is in the list of names" << std::endl;
+				std::cout << checker << "\n is in the list of names \n" << std::endl;
 			}
 			else {
-				std::cout << checker << "is not in the list of names" << std::endl;
+				std::cout << checker << "\n is not in the list of names \n" << std::endl;
 			}
 		}
 		if (selection == 3) {

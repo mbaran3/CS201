@@ -21,6 +21,7 @@ void inputscore(std::vector<int>& scores, std::vector<std::string>& names) {
 	bool run = true;
 	std::cin.ignore(1024, '\n');
 	while (run == true) {
+
 		bool repeat = false;
 		std::string name;
 		int num;
@@ -65,8 +66,8 @@ int searchnames(std::vector<std::string> names, std::string search) {
 
 }
 int main() {
-	std::vector<int> scores = { 32, 32, 32, 32 };
-	std::vector<std::string> names = { "Michael", "Jason", "Michelle", "Willow" };
+	std::vector<int> scores;
+	std::vector<std::string> names;
 	int num;
 	bool run = true;
 	while (run == true) {
