@@ -15,8 +15,17 @@ inline void keep_window_open() {
 	std::cout << "Press ENTER to exit the program." << std::endl;
 	std::getline(std::cin, tmp);
 }
-inline void printvector(std::vector<std::string> v) {
-	for (int i = 0; i < v.size(); i++) {
-		std::cout << v[i] << " ";
-	}
+inline void printvectorstring(std::vector<std::string> v) {
+	for (std::string print : v)
+		std::cout << print << std::endl;
+}
+inline int randomnum(int i) { // Generate a random number between 1 and i 
+	srand(time(NULL));
+
+	return rand() % i + 1;
+}
+inline void strtov(std::vector<std::string>& vec) { // takes a user input str and put it in vector
+	std::string str;
+	std::getline(std::cin, str);
+	vec.push_back(str);
 }
