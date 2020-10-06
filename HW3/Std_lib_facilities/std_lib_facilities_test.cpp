@@ -6,7 +6,8 @@ int main() {
 	std::string name;
 	std::cout << "Enter a Name " << std::endl;
 	strtov(test);
-	printvectorstring(test);
+	std::cout << "\n";
+	printvector(test);
 	keep_window_open();
 
 	return 0;
