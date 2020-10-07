@@ -8,4 +8,4 @@ void AnalyzeTokens(const std::vector<std::string>& tokens);
 
 bool Readline(std::string& str);
 
-unsigned StringToTokvensWS(const std::string& input, std::vector<std::string>& tokens);
+unsigned StringToTokensWS(const std::string& input, std::vector<std::string>& tokens);
