@@ -6,20 +6,12 @@ int main() {
 	std::cout << "Enter a line of characters or text sperated by white space";
 	std::cout << "type end, End, or END to end the porgram" << std::endl;
 	while (run) {
-
-
-		std::getline(std::cin, Input);
-
-
+		
+		if(Readline(Input))
+			StringToTokensWS(Input, Tokens);
 		if (Input == "END" || Input == "end" || Input == "End")
 			break;
-		else {
-			StringToTokensWS(Input, Tokens);
-			
-		}
-	
 	}
-	Tokens.push_back(Input);
 	AnalyzeTokens(Tokens);
 	return 0;
 }

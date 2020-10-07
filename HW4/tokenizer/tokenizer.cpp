@@ -33,5 +33,11 @@ unsigned StringToTokensWS(const std::string& input, std::vector<std::string>& to
 }
 
 bool Readline(std::string& str) {
-	return true;
+
+	std::getline(std::cin, str);
+
+	if (str.empty())
+		return false;
+	else
+		return true;
 }
