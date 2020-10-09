@@ -1,5 +1,13 @@
 #include "database.hpp"
 std::map<std::string, MyDatabaseRecord> myDatabase;
+
+bool ReadRecord(std::string key, MyDatabaseRecord& record) {
+	auto it = myDatabase.find(key);
+	if (it == myDatabase.end())
+		return false;
+	record = it->second;
+	return true;
+}
 bool PrintRecord(const std::string& key) {
 	auto it = myDatabase.find(key);
 	if (it == myDatabase.end())
@@ -50,6 +58,9 @@ bool DeleteRecord(const std::string& key) {
 bool EditRecord(const std::string& key) {
 	std::string pointer; //How the users selects
 	std::string NewGrade;
+	auto it = myDatabase.find(key);
+	if (it == myDatabase.end())
+		return false;
 	bool run = true;
 	while (run) {
 		std::cout << "What grade would you like to edit\n";
@@ -87,4 +98,3 @@ bool EditRecord(const std::string& key) {
 		}
 	}
 }	
-	

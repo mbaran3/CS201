@@ -14,14 +14,12 @@ struct  MyDatabaseRecord {
 
 };
 
-
 bool CreateRecord(const std::string& key);
 bool DeleteRecord(const std::string& key);
 bool PrintRecord(const std::string& key);
 bool EditRecord(const std::string& key);
 
-
-inline void keepholdwindow() {
+inline void holdline() {
 	std::string tmp;
 	std::cin.clear();
 	std::getline(std::cin, tmp);
