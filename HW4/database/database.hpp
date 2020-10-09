@@ -1,6 +1,7 @@
 #ifndef DATABASE_HPP
 #define DATABASE_HPP
 
+#include<iostream>
 #include<string>
 #include<map>
 
@@ -10,9 +11,21 @@ struct  MyDatabaseRecord {
 	std::string EnglishGrade;
 	std::string HistoryGrade;
 	std::string ScienceGrade;
-	bool passing = true;
-};
-bool CreateRecord(const std::string& key);
 
+};
+
+
+bool CreateRecord(const std::string& key);
+bool DeleteRecord(const std::string& key);
+bool PrintRecord(const std::string& key);
+bool EditRecord(const std::string& key);
+
+
+inline void keepholdwindow() {
+	std::string tmp;
+	std::cin.clear();
+	std::getline(std::cin, tmp);
+}
 
 #endif
+
