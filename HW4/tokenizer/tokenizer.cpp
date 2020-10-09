@@ -1,10 +1,10 @@
 #include "tokenizer.hpp"
 void AnalyzeTokens(const std::vector<std::string>& tokens) {
-	
-	for (auto token : tokens) {
+	for(auto token : tokens){
 		std::istringstream instream(token);
 		int numtoken;
 		instream >> numtoken;
+
 		if (!instream && !token.empty() && token.front() == '"' && token.back() == '"')
 			std::cout << "[string]\t" << token << "\n";
 		else if (!instream && token.empty())
