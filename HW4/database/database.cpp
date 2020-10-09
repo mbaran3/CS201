@@ -6,21 +6,39 @@ std::map<std::string, MyDatabaseRecord> myDatabase;
 bool PrintRecord(const std::string& key);
 bool CreateRecord(const std::string& key);
 int main() {
-
+	bool run = true;
+	std::string pointer;  // controls the program
 	std::string studentname;
-	std::cout << "Enter the Name of a student\n";
-	std::getline(std::cin, studentname);
-	CreateRecord(studentname);
-	PrintRecord(studentname);
+	while (run) {
+		std::cout << "Enter 1 to add a name\nEnter 2 to print a students grade\n";
+		std::getline(std::cin, pointer);
+		switch (pointer[0]) {
+		case '1':
+			std::cout << "Enter a name\n";
+			std::getline(std::cin, studentname);
+			CreateRecord(studentname);
+			break;
+
+		case '2':
+			std::cout << "Enter a name\n";
+			std::getline(std::cin, studentname);
+			PrintRecord(studentname);
+			break;
+
+		}
+	}
 	return 0;
-}
+	}
 bool PrintRecord(const std::string& key) {
 	auto it = myDatabase.find(key);
 	if (it == myDatabase.end())
 		return false;
 	else
 		std::cout << key << "'s grades are\n";
-		std::cout << "Math: " << myDatabase[key].MathGrade << "%";
+		std::cout << "Math: " << myDatabase[key].MathGrade << "%\n";
+		std::cout << "English: " << myDatabase[key].EnglishGrade << "%\n";
+		std::cout << "Scince: " << myDatabase[key].ScienceGrade << "%\n";
+		std::cout << "History: " << myDatabase[key].HistoryGrade << "%\n";
 }
 bool CreateRecord(const std::string& key) {
 	
