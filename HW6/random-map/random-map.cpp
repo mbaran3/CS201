@@ -1,3 +1,10 @@
+/*
+random-map.cpp
+Michael Baran
+11 November 2020
+HW6 for CS 201
+*/
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -28,7 +35,7 @@ int RandomBetweenN(int first, int last) {
     std::random_device rd;
     double mean = (first + last) / 2;
 
-    std::seed_seq seed{ rd(),rd(), rd(), rd(), rd(), rd(), rd(), rd(), rd() };
+    std::seed_seq seed{ rd() };
     std::mt19937 e(seed);
     std::normal_distribution<> normal_dist(mean, 2);
     int randnum = std::round(normal_dist(e));
