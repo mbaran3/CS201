@@ -5,6 +5,7 @@
 #include <random>
 #include <cmath>
 #include <sstream>
+#include <ctime>
 
 /*Generates a number based on Uniform Distribution
 * @param Smallest number
@@ -25,9 +26,14 @@ int RandomBetweenU(int first, int last) {
 int RandomBetweenN(int first, int last) {
 
     std::random_device rd;
-    std::mt19937 gen(rd());
-    std::normal_distribution<> dist(first, last);
-    return dist(gen);
+    double mean = (first + last) / 2;
+
+    std::seed_seq seed{ rd(),rd(), rd(), rd(), rd(), rd(), rd(), rd(), rd() };
+    std::mt19937 e(seed);
+    std::normal_distribution<> normal_dist(mean, 2);
+    int randnum = std::round(normal_dist(e));
+    if (randnum <= last || randnum >= first)
+        return randnum;
 }
 /*uses srand to generate a number
 *@param Smallest number
@@ -35,7 +41,6 @@ int RandomBetweenN(int first, int last) {
 */
 int RandomBetween(int first, int last) {
 
-    srand(time(NULL));
     return  rand() % last + first;
 }
 void PrintDistribution(const std::map<int, int>& numbers) {
@@ -48,11 +53,13 @@ void PrintDistribution(const std::map<int, int>& numbers) {
 int main()
 {
      
+    srand(time(NULL));
     std::map<int, int> normaldistr;
     std::map<int, int> uniformdistr;
     std::map<int, int> srandmap;
     std::string str;
     int first, last;
+    int randnumgenerated = 10000;
     std::cout << "Enter the largest and smallest number you want to generate";
     std::cout << " (seperated by a space)\n";
     while (1 != 0) {
@@ -62,12 +69,35 @@ int main()
         in >> first >> last;
         if (!in)
             std::cout << "Please enter two Numbers\n";
+        else if (last < first) {
+            int holder = first;
+            first = last;
+            last = holder;
+            std::cout << first << " " << last << "\n";
+            break;
+        }
         else
             break;
     }
 
-    for (int n = 0; n < 10000; ++n) {
-        ++normaldistr[RandomBetween(first, last)];
+    for (int n = 0; n < randnumgenerated; ++n) {
+        ++uniformdistr[RandomBetweenU(first, last)];
     }
-    PrintDistribution(normaldistr);
+    std::cout << "Distribution from Uniform Generation\n";
+    PrintDistribution(uniformdistr);
+    std::cout << "\n\n";
+
+    for (int n = 0; n < randnumgenerated; ++n)
+        ++normaldistr[RandomBetweenN(first, last)];
+   std::cout << "Distribution from Normal Generation\n";
+   PrintDistribution(normaldistr);
+   std::cout << "\n\n";
+
+   srand(time(NULL));
+   for (int n = 0; n < randnumgenerated; ++n)
+       ++srandmap[RandomBetween(first, last)];
+   std::cout << "Distribution from srand\n";
+   PrintDistribution(srandmap);
+
+   return 0;
 }
