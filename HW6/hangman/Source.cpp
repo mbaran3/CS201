@@ -45,8 +45,37 @@ int main() {
 
 	const int size = Secretword.size();
 	std::string Spaces(size, ' _');
-	PrintSpace(Secretword, guessed, Spaces);
+	
+	int attemptsleft = 10;
+	while (!hanged) {
+		int counter = 0;
 
+		std::string guess;
+		std::cout << "\nYou have " << attemptsleft << " Attempts left";
+		std::cout << "\nEnter a letter Upper case\n";
+		PrintSpace(Secretword, guessed, Spaces);
+		std::cout << "\n";
+		std::getline(std::cin, guess);
+		char guess2 = guess[0];
+
+		std::string::iterator it = std::find(Secretword.begin(), Secretword.end(), guess2);
+		if (it != Secretword.end()) {
+			std::cout << guess << " Is in the word" << std::endl;
+			guessed[counter].guess = guess2;
+			guessed[counter].rightguess = true;
+			guessed[counter].location = std::distance(Secretword.begin(), it);
+		}
+		else {
+			std::cout << "The Secret word does not contain  that letter" << std::endl;
+			guessed[counter].guess = guess2;
+			guessed[counter].rightguess = false;
+			attemptsleft = attemptsleft - 1;
+		}
+		if (attemptsleft == 0)
+			break;
+		PrintSpace(Secretword, guessed, Spaces);
+
+	}
 
 	return 0;
 }
